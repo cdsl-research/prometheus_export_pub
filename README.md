@@ -68,7 +68,8 @@ Metrics exported to ./status_code_metrics.csv
 Time range: 07:50:00 ～ 07:50:59 (UTC)
 (.venv) c0a22069@c0a22069-log-collector:~/prometheus_export_pub$
 ```
-出力されたCSVファイル（IPアドレスは隠しています）
+
+出力されたCSVファイル（IPアドレスは隠している）
 ```csv
 timestamp,192.168.X.X,192.168.X.X,192.168.X.X,192.168.X.X
 2025-11-02 07:50:00,200,200,200,200
@@ -80,8 +81,28 @@ timestamp,192.168.X.X,192.168.X.X,192.168.X.X,192.168.X.X
 ## run-get-metrics.sh
 `get-metrics.py`を実行するスクリプト．
 仮想環境を使いつつ，systemd timerやCronJobで定期実行させるときに使用する．
-定期実行させない場合は必要ない．
+定期実行させない場合は必要ない．出力されるcsvは`get-metrics.py`と変わらない．
 
+コマンドとその実行結果
+```bash
+c0a22069@c0a22069-log-collector:~/prometheus_export_pub$ ./run-get-metrics.sh
+/home/c0a22069/prometheus_export_pub/test-get-metrics.py:18: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+/home/c0a22069/prometheus_export_pub/test-get-metrics.py:43: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+  ts = datetime.utcfromtimestamp(float(timestamp)).strftime("%Y-%m-%d %H:%M:%S")
+Metrics exported to ./status_code_metrics.csv
+Time range: 07:51:00 ～ 07:51:59 (UTC)
+c0a22069@c0a22069-log-collector:~/prometheus_export_pub$
+```
+
+出力されたCSVファイル（IPアドレスは隠している）
+```csv
+timestamp,192.168.X.X,192.168.X.X,192.168.X.X,192.168.X.X
+2025-11-02 07:51:00,200,200,200,200
+2025-11-02 07:51:15,200,200,200,200
+2025-11-02 07:51:30,200,200,200,200
+2025-11-02 07:51:45,200,200,200,200
+```
 
 
 
