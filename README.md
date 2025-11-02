@@ -55,6 +55,7 @@ Successfully installed certifi-2025.10.5 charset_normalizer-3.4.4 idna-3.11 requ
 ## get-metrics.py
 PrometheusのHTTP API `/api/v1/query_range`をもちいて，`probe_http_status_code`メトリクスを取得し、CSV形式で保存するスクリプト．
 現在時刻を基準に直近1分間のデータを15秒間隔で取得し，対象の各IPアドレス（TARGET_IPS）ごとのHTTPステータスコードをstatus_code_metrics.csv に追記して保存する．
+`PROM_URL`，`JOB_NAME`，`TARGET_IPS`は自分の実行する環境に合わせる．今回は`TARGET_IPS`が4つだが，1つから実行できる．
 
 コマンドとその実行結果
 ```bash
